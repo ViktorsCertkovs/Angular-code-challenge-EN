@@ -1,0 +1,9 @@
+[
+  { "id": "4", "value": "Hatchback" },
+  { "id": "5", "value": "Sedan" },
+  { "id": "6", "value": "Station" },
+  { "id": "7", "value": "Cabriolet" },
+  { "id": "8", "value": "Coupé" },
+  { "id": "9", "value": "Multi Purpose Vehicle (MVP)" },
+  { "id": "10", "value": "Terreinauto" }
+]
