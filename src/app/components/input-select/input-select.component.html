@@ -1,0 +1,15 @@
+<label class="block mt-4">
+  <span class="text-gray-700">{{ label }}</span>
+  <select
+    class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+    [formControlName]="name"
+    [id]="name"
+  >
+    <option
+      [ngValue]="item.id"
+      *ngFor="let item of listOfValues; let i = index"
+    >
+      {{ item.value }}
+    </option>
+  </select>
+</label>
