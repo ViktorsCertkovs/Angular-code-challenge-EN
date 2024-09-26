@@ -6,7 +6,7 @@
     <app-input-select
       label="Van welk type voertuig wilt u voertuiginformatie opzoeken?"
       name="vehicleType"
-      [listOfValues]="vehicleTypes"
+      [listOfValues]="vehicleTypes$ | async"
     ></app-input-select>
 
     <!-- SELECT VEHICLE SUBTYPE-->
@@ -14,7 +14,7 @@
       <app-input-select
         label="Welk type [auto/motor/brommer] hebt u?"
         name="vehicleSubtype"
-        [listOfValues]="getVehicleSubtypes()"
+        [listOfValues]="getVehicleSubtypes() | async"
       ></app-input-select>
     </ng-container>
 

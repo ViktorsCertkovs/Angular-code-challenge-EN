@@ -3,3 +3,7 @@ export interface VehicleInfo {
   vehicleSubtype?: string;
   kenteken: string;
 }
+
+export interface VehicleInfoState {
+  vehicleInfo: VehicleInfo[];
+}

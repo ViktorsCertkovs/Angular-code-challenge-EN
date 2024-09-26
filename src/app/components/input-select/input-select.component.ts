@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import {
   ControlContainer,
   FormGroupDirective,
@@ -17,11 +23,11 @@ import { ListOfValuesItem } from 'src/app/interfaces/list-of-values';
     },
   ],
 })
-export class InputSelectComponent implements OnInit {
+export class InputSelectComponent implements OnInit, OnChanges {
   @Input()
   label: string = '';
   @Input()
-  listOfValues: ListOfValuesItem[] = [];
+  listOfValues: ListOfValuesItem[] | null = [];
   @Input()
   name: string = '';
 
@@ -29,6 +35,10 @@ export class InputSelectComponent implements OnInit {
 
   private get _formGroup(): FormGroup {
     return this.f?.form ?? undefined;
+  }
+
+  private get _formControl(): FormControl {
+    return this._formGroup.get(this.name) as FormControl;
   }
 
   ngOnInit(): void {
@@ -42,6 +52,14 @@ export class InputSelectComponent implements OnInit {
       throw new Error(
         'FormControl is required. Make sure there is correct contorl name.'
       );
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['listOfValues']) {
+      if (this.listOfValues && this.listOfValues?.length > 0) {
+        this._formControl.setValue(this.listOfValues[0].id);
+      }
     }
   }
 }
